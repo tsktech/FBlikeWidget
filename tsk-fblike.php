@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: TSKAMATH FaceBook Like
- * Description: Simple Facebook Like with Shortcode
+ * Plugin Name: TSKAMATH FaceBook Like Widget
+ * Description: Simple Facebook Like with Shortcode Widget
  * Plugin URI: tsktech.in/tskfblike
  * Author: Srikanth Kamath
  * Author URI: https://tskamath.com

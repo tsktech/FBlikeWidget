@@ -3,6 +3,8 @@
 /**
  * Adds FBlikeBox Widget.
  * https://youtu.be/eM8IbY_zWow
+ * https://www.wpexplorer.com/create-widget-plugin-wordpress/
+ * https://github.com/wpexplorer/my-widget-plugin
  */
 
 class FBlikeBox_Widget extends WP_Widget {
@@ -140,6 +142,11 @@ class FBlikeBox_Widget extends WP_Widget {
 	    $locale = ( !empty($instance['locale']) ) ? $instance['locale'] : '';
 
 	    $locales_data = array(
+	    	'en_US' => 'English (US)',
+	      	'en_GB' => 'English (UK)',
+	    );
+
+	    /*$locales_data = array(
 	      'af_ZA' => 'Afrikaans',
 	      'ar_AR' => 'Arabic',
 	      'az_AZ' => 'Azeri',
@@ -215,7 +222,7 @@ class FBlikeBox_Widget extends WP_Widget {
 	      'zh_CN' => 'Simplified Chinese (China)',
 	      'zh_HK' => 'Traditional Chinese (Hong Kong)',
 	      'zh_TW' => 'Traditional Chinese (Taiwan)',
-	    );
+	    );*/
 	?>
 
 		<p>
@@ -238,7 +245,7 @@ class FBlikeBox_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id('height'); ?>"><?php esc_html_e('height:', 'tsk-fblike'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id('height'); ?>" name="<?php echo $this->get_field_name('height'); ?>" type="text" value="<?php echo esc_attr($height); ?>" placeholder="Ex: 400" />
 		</p>
-		<p>
+		<!-- <p>
 			<label for="<?php echo $this->get_field_id('locale'); ?>"><?php esc_html_e('Locale:', 'tsk-fblike'); ?></label>
 			<select class="widefat" name="<?php echo $this->get_field_name('locale'); ?>">
 			  <option value=""><?php esc_html_e('Select..', 'tsk-fblike'); ?></option>
@@ -246,7 +253,7 @@ class FBlikeBox_Widget extends WP_Widget {
 			    <option <?php selected( $locale, $key , $echo = true); ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option>
 			  <?php endforeach; ?>
 			</select>
-		</p>
+		</p> -->
 		<p>
 			<input id="<?php echo $this->get_field_id('face'); ?>" name="<?php echo $this->get_field_name('face'); ?>" type="checkbox" value="1" <?php checked( '1', $face ); ?> />
 			<label for="<?php echo $this->get_field_id('face'); ?>"><?php esc_html_e('Show Friend\'s Faces', 'tsk-fblike'); ?></label>
@@ -277,27 +284,18 @@ class FBlikeBox_Widget extends WP_Widget {
 			  $acw = ( $acw == 1 ) ? 'true' : 'false';
 			?>
 			<textarea
-				rows="4"
+				rows="6"
 				cols="50"
 				class="widefat"
 				id="<?php echo $this->get_field_id('shortcode'); ?>"
 				name="<?php echo $this->get_field_name('shortcode'); ?>" readonly>
-	<?php
-	echo esc_attr('[tsk-fblike-box
-	url="'.esc_attr($text).'"
-	width="'.esc_attr($width).'"
-	height="'.esc_attr($height).'"
-	faces="'.esc_attr($face).'"
-	hidecover="'.esc_attr($hidecover).'"
-	tabs="'.esc_attr($tabs).'"
-	small_header="'.esc_attr($small_header).'"
-	hide_cta="'.esc_attr($hide_cta).'" "
-	acw="'.esc_attr($acw).'"
-	locale="'.esc_attr($locale).'"]'); ?>
+<?php
+echo esc_attr('[tsk-fblike-box url="'.esc_attr($text).'" width="'.esc_attr($width).'" height="'.esc_attr($height).'" faces="'.esc_attr($face).'" hidecover="'.esc_attr($hidecover).'" tabs="'.esc_attr($tabs).'" small_header="'.esc_attr($small_header).'" hide_cta="'.esc_attr($hide_cta).'" " acw="'.esc_attr($acw).'"]'); ?>
 			</textarea>
 		</p>
 
-	<?php
+		<?php
 	}// getform
 
 }
+// <!-- locale="'.esc_attr($locale).'"]');
